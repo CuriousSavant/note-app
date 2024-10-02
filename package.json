@@ -2,21 +2,36 @@
   "name": "note-app",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/main.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"next dev\" \"wait-on http://localhost:3000 && electron ./dist/main.js\"",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "electron ./dist/main.js",
+    "lint": "next lint",
+    "package-win": "electron-packager . note-app --platform=win32 --arch=x64 --out=release-builds --overwrite"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^6.1.1",
+    "@mui/material": "^6.1.1",
+    "@prisma/client": "^5.20.0",
+    "@types/react-modal": "^3.16.3",
+    "axios": "^1.7.7",
+    "next": "14.2.13",
+    "prisma": "^5.20.0",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.13"
+    "react-modal": "^3.16.1"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
-    "@types/react-dom": "^18"
+    "@types/react-dom": "^18",
+    "concurrently": "^9.0.1",
+    "electron": "32.1.2",
+    "electron-builder": "^25.0.5",
+    "typescript": "^5",
+    "wait-on": "^8.0.1"
   }
 }
