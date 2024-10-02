@@ -11,7 +11,6 @@ function createWindow() {
   });
 
   mainWindow.loadURL("http://localhost:3000");
-  mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {

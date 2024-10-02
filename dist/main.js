@@ -7,11 +7,10 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, "/preload.js"),
+            preload: path.join(__dirname, "/electron/dist/preload.js"),
         },
     });
     mainWindow.loadURL("http://localhost:3000");
-    mainWindow.webContents.openDevTools();
 }
 electron_1.app.whenReady().then(function () {
     createWindow();
